@@ -56,12 +56,12 @@ publishing {
     }
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/your-username/MyProject")
+            name = "Permission"
+            url = uri("https://github.com/Pm2112/AndroidExtension")
             credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("Pm2112")
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
                 password = project.findProperty("gpr.token") as String?
-                    ?: System.getenv("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")
+                    ?: System.getenv("GITHUB_TOKEN")
             }
         }
     }
