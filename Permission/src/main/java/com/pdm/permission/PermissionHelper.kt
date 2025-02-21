@@ -13,38 +13,32 @@ class PermissionHelper(
     private val fragment: Fragment? = null
 ) {
 
-    private var permissionCallback: PermissionCallback? = null
+    private var callback: PermissionCallback? = null
 
-    private val requestPermissionLauncher =
-        (activity
-            ?: fragment?.activity)?.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions())
-        { results ->
-            val grantedPermissions = results.filterValues { it }.keys.toList()
-            val deniedPermissions = results.filterValues { !it }.keys.toList()
-            permissionCallback?.invoke(grantedPermissions, deniedPermissions)
-        }
-
-    fun requestPermissions(permissions: Array<String>, callback: PermissionCallback) {
-        permissionCallback = callback
-
-        val context = activity ?: fragment?.context
-        if (context == null || requestPermissionLauncher == null) {
-            callback(emptyList(), permissions.toList())
-            return
-        }
-
-        val permissionsToRequest = permissions.filter {
-            ContextCompat.checkSelfPermission(context, it) != PackageManager.PERMISSION_GRANTED
-        }
-
-        if (permissionsToRequest.isEmpty()) {
-            callback(permissions.toList(), emptyList())
-        } else {
-            requestPermissionLauncher.launch(permissionsToRequest.toTypedArray())
-        }
+    private val launcher = (activity ?: fragment?.activity)?.registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { results ->
+        callback?.invoke(
+            results.filterValues { it }.keys.toList(),
+            results.filterValues { !it }.keys.toList()
+        )
     }
 
-    fun isPermissionGranted(permission: String): Boolean {
+    fun request(vararg permissions: String, cb: PermissionCallback) {
+        callback = cb
+        val context = activity ?: fragment?.context ?: return cb(emptyList(), permissions.toList())
+        val toRequest = permissions.filter {
+            ContextCompat.checkSelfPermission(
+                context,
+                it
+            ) != PackageManager.PERMISSION_GRANTED
+        }
+        if (toRequest.isEmpty()) cb(permissions.toList(), emptyList()) else launcher?.launch(
+            toRequest.toTypedArray()
+        )
+    }
+
+    fun isGranted(permission: String): Boolean {
         val context = activity ?: fragment?.context ?: return false
         return ContextCompat.checkSelfPermission(
             context,

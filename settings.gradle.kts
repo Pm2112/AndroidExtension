@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidExtension"
 include(":app")
 include(":Permission")
+include(":Network")

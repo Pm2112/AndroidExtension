@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pdm.androidextension.databinding.ActivityMainBinding
 import com.pdm.permission.PermissionHelper
+import com.pdm.permission.PermissionKeys
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,14 +22,12 @@ class MainActivity : AppCompatActivity() {
         permissionHelper = PermissionHelper(activity = this)
 
         binding.btnPermission.setOnClickListener {
-            permissionHelper.requestPermissions(
-                arrayOf(android.Manifest.permission.CAMERA)
-            ) { granted, denied ->
-                if (granted.isNotEmpty()) {
-                    Toast.makeText(this, "Quyền được cấp: $granted", Toast.LENGTH_SHORT).show()
-                }
-                if (denied.isNotEmpty()) {
-                    Toast.makeText(this, "Quyền bị từ chối: $denied", Toast.LENGTH_SHORT).show()
+            binding.btnPermission.setOnClickListener {
+                permissionHelper.request(
+                    PermissionKeys.CAMERA, PermissionKeys.STORAGE
+                ) { granted, denied ->
+                    if (granted.isNotEmpty()) Toast.makeText(this, "Đã cấp: $granted", Toast.LENGTH_SHORT).show()
+                    if (denied.isNotEmpty()) Toast.makeText(this, "Bị từ chối: $denied", Toast.LENGTH_SHORT).show()
                 }
             }
         }
