@@ -12,7 +12,6 @@ class PermissionHelper(
     private val activity: ComponentActivity? = null,
     private val fragment: Fragment? = null
 ) {
-
     private var callback: PermissionCallback? = null
 
     private val launcher = (activity ?: fragment?.activity)?.registerForActivityResult(
@@ -33,9 +32,13 @@ class PermissionHelper(
                 it
             ) != PackageManager.PERMISSION_GRANTED
         }
-        if (toRequest.isEmpty()) cb(permissions.toList(), emptyList()) else launcher?.launch(
-            toRequest.toTypedArray()
-        )
+        if (toRequest.isEmpty()) {
+            cb(permissions.toList(), emptyList())
+        } else {
+            launcher?.launch(
+                toRequest.toTypedArray()
+            )
+        }
     }
 
     fun isGranted(permission: String): Boolean {

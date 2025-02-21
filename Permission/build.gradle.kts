@@ -34,7 +34,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -43,11 +42,26 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-publishing{
-    publications{
-        register<MavenPublication>("release"){
-            afterEvaluate{
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            groupId = "com.pdm"
+            artifactId = "permission"
+            version = "1.0.0"
+
+            afterEvaluate {
                 from(components["release"])
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/your-username/MyProject")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("Pm2112")
+                password = project.findProperty("gpr.token") as String?
+                    ?: System.getenv("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")
             }
         }
     }
