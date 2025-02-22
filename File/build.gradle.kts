@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.pdm.network"
+    namespace = "com.pdm.file"
     compileSdk = 35
 
     defaultConfig {
@@ -34,24 +34,20 @@ android {
 }
 
 dependencies {
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    testImplementation("org.mockito:mockito-core:5.3.1")
-    testImplementation("org.mockito:mockito-inline:5.2.0")
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
-    testImplementation("org.robolectric:robolectric:4.10.3")
 }
 
 publishing {
     publications {
         create<MavenPublication>("release") {
             groupId = "com.pdm"
-            artifactId = "network"
+            artifactId = "file"
             version = "1.0.0"
 
             afterEvaluate {

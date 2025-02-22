@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.pdm.network"
+    namespace = "com.pdm.audio"
     compileSdk = 35
 
     defaultConfig {
@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -41,17 +42,14 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    testImplementation("org.mockito:mockito-core:5.3.1")
-    testImplementation("org.mockito:mockito-inline:5.2.0")
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
-    testImplementation("org.robolectric:robolectric:4.10.3")
+    implementation("com.arthenica:ffmpeg-kit-full:6.0")
 }
 
 publishing {
     publications {
         create<MavenPublication>("release") {
             groupId = "com.pdm"
-            artifactId = "network"
+            artifactId = "audio"
             version = "1.0.0"
 
             afterEvaluate {

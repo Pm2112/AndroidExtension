@@ -54,15 +54,4 @@ publishing {
             }
         }
     }
-    repositories {
-        maven {
-            name = "Permission"
-            url = uri("https://github.com/Pm2112/AndroidExtension")
-            credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
-                password = project.findProperty("gpr.token") as String?
-                    ?: System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
 }

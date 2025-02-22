@@ -52,7 +52,8 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    implementation("com.github.Pm2112.Premission:1.0.0")
+    implementation("com.pdm:network:1.0.0")
+    implementation("com.pdm:permission:1.0.0")
 
 //    implementation(project(":Permission"))
 }
