@@ -47,7 +47,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.pdm"
             artifactId = "permission"
-            version = "1.0.0"
+            version = properties["lib.permission"].toString()
 
             afterEvaluate {
                 from(components["release"])

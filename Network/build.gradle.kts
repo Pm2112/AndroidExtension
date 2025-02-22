@@ -52,7 +52,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.pdm"
             artifactId = "network"
-            version = "1.0.0"
+            version = properties["lib.network"].toString()
 
             afterEvaluate {
                 from(components["release"])

@@ -50,7 +50,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.pdm"
             artifactId = "audio"
-            version = "1.0.0"
+            version = properties["lib.audio"].toString()
 
             afterEvaluate {
                 from(components["release"])

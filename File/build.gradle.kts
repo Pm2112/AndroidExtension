@@ -48,7 +48,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.pdm"
             artifactId = "file"
-            version = "1.0.0"
+            version = properties["lib.file"].toString()
 
             afterEvaluate {
                 from(components["release"])
