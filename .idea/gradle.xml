@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Audio" />
+            <option value="$PROJECT_DIR$/File" />
             <option value="$PROJECT_DIR$/Network" />
             <option value="$PROJECT_DIR$/Permission" />
             <option value="$PROJECT_DIR$/app" />
