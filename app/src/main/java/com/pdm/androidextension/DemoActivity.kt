@@ -3,19 +3,18 @@ package com.pdm.androidextension
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pdm.adbilling.ui.BaseActivity
-import com.pdm.androidextension.databinding.ActivityMainBinding
+import com.pdm.androidextension.databinding.ActivityDemoBinding
 
-class MainActivity : BaseActivity() {
-    private lateinit var binding: ActivityMainBinding
+class DemoActivity : BaseActivity() {
+    private lateinit var binding: ActivityDemoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityDemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())

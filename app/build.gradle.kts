@@ -52,9 +52,8 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    implementation("com.pdm:network:1.0.0")
-    implementation("com.pdm:permission:1.0.0")
-//    implementation("com.pdm:file:1.0.0")
+//    implementation("com.pdm:network:0.0.1")
+//    implementation("com.pdm:permission:0.0.1")
 
-//    implementation(project(":Permission"))
+    implementation(project(":AdBilling"))
 }

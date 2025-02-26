@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AdBilling" />
             <option value="$PROJECT_DIR$/Audio" />
             <option value="$PROJECT_DIR$/File" />
             <option value="$PROJECT_DIR$/Network" />
