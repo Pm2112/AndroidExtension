@@ -54,6 +54,7 @@ dependencies {
 
 //    implementation("com.pdm:network:0.0.1")
 //    implementation("com.pdm:permission:0.0.1")
+    implementation(files("libs/shazam_kit.aar"))
 
     implementation(project(":AdBilling"))
 }

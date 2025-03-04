@@ -6,15 +6,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.pdm.adbilling.ui.BaseActivity
 import com.pdm.androidextension.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
@@ -27,6 +30,8 @@ class MainActivity : BaseActivity() {
             )
             insets
         }
+
+        mainViewModel.initShazam()
 
         binding.btnStart.setOnClickListener {
             startActivity(Intent(this, DemoActivity::class.java))

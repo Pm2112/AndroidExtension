@@ -25,9 +25,6 @@ class BannerAd(
         @SuppressLint("StaticFieldLeak")
         private var instance: BannerAd? = null
 
-        /**
-         * Sử dụng Singleton để quản lý banner trong toàn bộ app
-         */
         fun getInstance(activity: Activity, adListener: AdmListener? = null): BannerAd {
             return instance ?: BannerAd(activity, adListener).also { instance = it }
         }
