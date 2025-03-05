@@ -25,7 +25,7 @@ class AudioRecorder(
 
     companion object {
         private const val TAG = "AudioRecorder"
-        private const val SAMPLE_RATE = 44100
+        private const val SAMPLE_RATE = 48000
         private const val BUFFER_SIZE = 1024
         private const val MILLI_SECOND = 1000L
         private const val MINUTE_UNIT = 60
@@ -87,6 +87,15 @@ class AudioRecorder(
         updateRecordingTime(final = true)
 
         return audioSaver.saveTemporaryAudio(audioData)
+    }
+
+    /**
+     * Lấy dữ liệu PCM hiện tại
+     */
+    fun getPcmData(): ByteArray {
+        return synchronized(audioData) {
+            audioData.toByteArray()
+        }
     }
 
     /**

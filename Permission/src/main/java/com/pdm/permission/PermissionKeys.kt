@@ -5,4 +5,5 @@ import android.Manifest
 object PermissionKeys {
     const val CAMERA = Manifest.permission.CAMERA
     const val READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE
+    const val AUDIO_RECORD = Manifest.permission.RECORD_AUDIO
 }
