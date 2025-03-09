@@ -10,6 +10,15 @@ pluginManagement {
         maven("https://jitpack.io")
         mavenCentral()
         gradlePluginPortal()
+        maven {
+            url = uri("https://maven.pkg.github.com/Pm2112/AndroidExtension")
+            credentials {
+                username = providers.gradleProperty("gpr.user")
+                    .orElse(providers.environmentVariable("GITHUB_USERNAME")).toString()
+                password = providers.gradleProperty("gpr.token")
+                    .orElse(providers.environmentVariable("GITHUB_TOKEN")).toString()
+            }
+        }
     }
 }
 dependencyResolutionManagement {
@@ -20,6 +29,15 @@ dependencyResolutionManagement {
         maven("https://jitpack.io")
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/Pm2112/AndroidExtension")
+            credentials {
+                username = providers.gradleProperty("gpr.user")
+                    .orElse(providers.environmentVariable("GITHUB_USERNAME")).toString()
+                password = providers.gradleProperty("gpr.token")
+                    .orElse(providers.environmentVariable("GITHUB_TOKEN")).toString()
+            }
+        }
     }
 }
 

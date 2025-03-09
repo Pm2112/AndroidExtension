@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.pdm.adbilling.ui.BaseActivity
 import com.pdm.androidextension.databinding.ActivityDemoBinding
 
 class DemoActivity : BaseActivity() {

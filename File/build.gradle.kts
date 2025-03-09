@@ -43,26 +43,26 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            groupId = "com.pdm"
-            artifactId = "file"
-            version = project.findProperty("lib.audio")?.toString()
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Pm2112/AndroidExtension")
-            credentials {
-                username = project.findProperty("gpr.user")?.toString() ?: System.getenv("GITHUB_USERNAME")
-                password = project.findProperty("gpr.token")?.toString() ?: System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-}
+//publishing {
+//    publications {
+//        create<MavenPublication>("release") {
+//            groupId = "com.pdm"
+//            artifactId = "file"
+//            version = project.findProperty("lib.audio")?.toString()
+//
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//        }
+//    }
+//    repositories {
+//        maven {
+//            name = "GitHubPackages"
+//            url = uri("https://maven.pkg.github.com/Pm2112/AndroidExtension")
+//            credentials {
+//                username = project.findProperty("gpr.user")?.toString() ?: System.getenv("GITHUB_USERNAME")
+//                password = project.findProperty("gpr.token")?.toString() ?: System.getenv("GITHUB_TOKEN")
+//            }
+//        }
+//    }
+//}

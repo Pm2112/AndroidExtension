@@ -47,26 +47,26 @@ dependencies {
     testImplementation("org.robolectric:robolectric:4.10.3")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            groupId = "com.pdm"
-            artifactId = "network"
-            version = project.findProperty("lib.audio")?.toString()
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Pm2112/AndroidExtension")
-            credentials {
-                username = project.findProperty("gpr.user")?.toString() ?: System.getenv("GITHUB_USERNAME")
-                password = project.findProperty("gpr.token")?.toString() ?: System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-}
+//publishing {
+//    publications {
+//        create<MavenPublication>("release") {
+//            groupId = "com.pdm"
+//            artifactId = "network"
+//            version = project.findProperty("lib.audio")?.toString()
+//
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//        }
+//    }
+//    repositories {
+//        maven {
+//            name = "GitHubPackages"
+//            url = uri("https://maven.pkg.github.com/Pm2112/AndroidExtension")
+//            credentials {
+//                username = project.findProperty("gpr.user")?.toString() ?: System.getenv("GITHUB_USERNAME")
+//                password = project.findProperty("gpr.token")?.toString() ?: System.getenv("GITHUB_TOKEN")
+//            }
+//        }
+//    }
+//}

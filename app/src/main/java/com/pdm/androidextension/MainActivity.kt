@@ -8,7 +8,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import com.pdm.adbilling.ui.BaseActivity
 import com.pdm.androidextension.databinding.ActivityMainBinding
 import com.pdm.androidextension.shazam.AppleDeveloperTokenGenerator
 import com.pdm.androidextension.shazam.AudioChunk

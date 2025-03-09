@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    // background
+<!--    <color name="QRCodeFragment_menu_background">#5EF9F9F9</color>-->
+    <color name="QRCodeFragment_menu_background">#eaeaeb</color>
+
+    // common
+    <color name="grey">#B0B7C3</color>
+    <color name="grey_2">#F8FAFB</color>
+    <color name="transparent">#00000000</color>
+    <color name="red">#FF0000</color>
+
+    // app
+    <color name="splashBackground">#FFFFFFFF</color>
+    <color name="blueBackground">#3B82F6</color>
+    <color name="footer_select">#FF5166</color>
+    <color name="gray_background">#7A869A</color>
+    <color name="dismiss_background">#99000000</color>
+    <color name="gray_button_background">#CBCBCB</color>
+
+    <color name="cardview1">#FC9B0A</color>
+    <color name="cardview2">#29D429</color>
+    <color name="cardview3">#F6580F</color>
+    <color name="cardview4">#EA1BC6</color>
+    <color name="cardview5">#E519FC</color>
+    <color name="cardview6">#E14033</color>
+    <color name="cardview7">#4A4B5D</color>
+    <color name="cardview8">#34A853</color>
+    <color name="cardview9">#4285F4</color>
+    <color name="cardview10">#FBBC04</color>
+    <color name="cardview11">#3B5999</color>
+    <color name="cardview12">#EB2E28</color>
+    <color name="cardview14">#000000</color>
+
+    // notification background
+    <color name="background_notification_card_gray">#FAFAFF</color>
+    <color name="background_notification_card_pink">#FF7888</color>
+    <color name="textColor_title_notification">#262626</color>
+    <color name="textColor_text_notification">#7A869A99</color>
+
+    // text
+    <color name="textColor_gray">#565656</color>
+    <color name="textColor_gray_2">#616161</color>
+    <color name="QRCodeFragment_text_1">#7A869A</color>
+    <color name="QRCodeFragment_text_2">#7A869A</color>
+    <color name="QRCodeFragment_text_3">#7A869A</color>
+    <color name="QRCodeFragment_text_4">#7A869A</color>
+    <color name="QRCodeFragment_text_5">#7A869A</color>
+    <color name="QRCodeFragment_text_6">#7A869A</color>
+    <color name="QRCodeFragment_text_7">#7A869A</color>
+    <color name="QRCodeFragment_text_8">#7A869A</color>
+    <color name="QRCodeFragment_text_9">#7A869A</color>
+    <color name="QRCodeFragment_text_10">#7A869A</color>
+    <color name="QRCodeFragment_text_11">#7A869A</color>
+    <color name="QRCodeFragment_text_12">#7A869A</color>
+    <color name="QRCodeFragment_text_13">#7A869A</color>
+    <color name="QRCodeFragment_text_14">#7A869A</color>
+
+    <color name="ResultCreateActivity_background_save">#FF0E9F</color>
+    <color name="ResultCreateActivity_background_share">#5494FF</color>
+
+    // line
+    <color name="line_bottom">#3C3C4399</color>
+    <color name="Neutral_100">#F3F3F3</color>
+    <color name="Neutral_200">#E5E5E5</color>
+    <color name="Neutral_300">#CACACA</color>
+    <color name="Neutral_400">#B0B0B0</color>
+    <color name="Neutral_500">#969696</color>
+    <color name="Neutral_600">#7B7B7B</color>
+    <color name="Neutral_700">#616161</color>
+    <color name="Neutral_800">#474747</color>
+    <color name="Neutral_900">#2C2C2C</color>
+    <color name="Neutral_1000">#121212</color>
+
+    // dialog
+    <color name="dialog_btn_text">#007AFF</color>
+    <color name="dialog_title_bg"></color>
+
+    <!--region Splash Screen-->
+    <color name="splash_background">#FEF268</color>
+    <color name="splash_text">#000000</color>
+    <color name="splash_progressbar_bg">#FFFFFF</color>
+    <color name="splash_progress_bg">#474747</color>
+    <!--endregion-->
+
+    <!--region OnBoard Screen-->
+    <color name="onboard_background">#FFFFFF</color>
+    <color name="onboard_navigate_text">#121212</color>
+
+    <!--endregion-->
+
+    <!--region Native Screen-->
+    <color name="native_container_bg">#F4F4F4</color>
+    <color name="native_full_container_bg">#F4F4F4</color>
+    <color name="native_container_border">#C1C1C1</color>
+    <color name="native_ad_badge_bg">#F1BA0E</color>
+    <color name="ad_headline_text">#000000</color>
+    <color name="ad_body_text">#000000</color>
+    <color name="ad_call_to_action_bg">#1D72FF</color>
+    <color name="ad_call_to_action_text">#FFFFFF</color>
+    <!--endregion-->
+</resources>

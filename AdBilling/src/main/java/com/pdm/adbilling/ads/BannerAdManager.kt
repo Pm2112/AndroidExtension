@@ -1,6 +1,5 @@
 package com.pdm.adbilling.ads
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Build
 import android.util.Log
@@ -8,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowMetrics
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
@@ -15,24 +17,22 @@ import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.LoadAdError
 import com.pdm.adbilling.R
 
-class BannerAd(
+class BannerAdManager(
     private val activity: Activity,
-    private val adListener: AdmListener? = null
-) {
+    private val lifecycle: Lifecycle,
+) : DefaultLifecycleObserver {
     companion object {
         private const val TAG = "BannerAd"
         private val TYPE_AD = TypeAds.BANNER
-        @SuppressLint("StaticFieldLeak")
-        private var instance: BannerAd? = null
+    }
 
-        fun getInstance(activity: Activity, adListener: AdmListener? = null): BannerAd {
-            return instance ?: BannerAd(activity, adListener).also { instance = it }
-        }
+    init {
+        lifecycle.addObserver(this)
     }
 
     private var adView: AdView? = null
     private var contentLoader: View? = null
-    private var currentIndex = 0
+    private var adUnitIdIndex = 0
 
     private val adSize: AdSize
         get() {
@@ -49,70 +49,64 @@ class BannerAd(
             return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, adWidth)
         }
 
-    fun loadBanner(id: Int = -1, adKeyPosition: String, adContainer: ViewGroup) {
+    fun loadBanner(adContainer: ViewGroup) {
         if (!AdManager.isInitialized()) {
-            Log.w(TAG, "MobileAds chưa khởi tạo. Không tải quảng cáo.")
+            Log.w(TAG, "MobileAds uninitialized. Not loading ad.")
             return
         }
+        val adView = AdView(activity)
+        adView.adUnitId = AdManager.listBannerAdUnitId[adUnitIdIndex]
 
-        // Kiểm tra nếu đã có banner đang hiển thị, không tạo lại
-        if (adView != null && adView?.parent == adContainer) {
-            Log.d(TAG, "Banner đã tồn tại, không tạo lại.")
-            return
-        }
+        changeAdUnitId()
 
-        // Thêm ContentLoader để hiển thị loading
+        adView.setAdSize(adSize)
+        this.adView = adView
+
         contentLoader = LayoutInflater.from(activity)
-            .inflate(R.layout.banner_loading, adContainer, false)
+            .inflate(R.layout.loading_banner, adContainer, false)
+
         adContainer.removeAllViews()
         adContainer.addView(contentLoader)
 
-        val newAdView = AdView(activity)
-        newAdView.adUnitId = if (id == -1) getNextBannerId() else AdManager.listBannerAdUnitId[id]
-        newAdView.setAdSize(adSize)
-
-        adView = newAdView
-
-        val adRequest = AdRequest.Builder().build()
-        newAdView.adListener = object : AdListener() {
+        adView.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 super.onAdLoaded()
-                adListener?.onAdLoaded(TYPE_AD, adKeyPosition)
-                hideContentLoader()
                 adContainer.removeAllViews()
-                adContainer.addView(newAdView)
+                adContainer.addView(adView)
             }
 
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 super.onAdFailedToLoad(adError)
-                adListener?.onAdFailedToLoad(TYPE_AD, adKeyPosition, adError.code)
-                hideContentLoader()
+                adContainer.removeAllViews()
             }
         }
 
-        newAdView.loadAd(adRequest)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
-    private fun hideContentLoader() {
-        contentLoader?.visibility = View.GONE
+    private fun changeAdUnitId() {
+        adUnitIdIndex++
+        if (adUnitIdIndex >= AdManager.listBannerAdUnitId.size) {
+            adUnitIdIndex = 0
+        }
     }
 
-    private fun getNextBannerId(): String {
-        val id = AdManager.listBannerAdUnitId[currentIndex]
-        currentIndex = (currentIndex + 1) % AdManager.listBannerAdUnitId.size
-        return id
-    }
-
-    fun resume() {
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
         adView?.resume()
+        Log.d(TAG, "BannerAd resumed.")
     }
 
-    fun pause() {
+    override fun onPause(owner: LifecycleOwner) {
+        super.onPause(owner)
         adView?.pause()
+        Log.d(TAG, "BannerAd paused.")
     }
 
-    fun destroy() {
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
         adView?.destroy()
-        adView = null
+        Log.d(TAG, "BannerAd destroyed.")
     }
 }

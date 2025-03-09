@@ -1,1 +1,5 @@
-<resources></resources>
+<resources>
+    <string name="headline" translatable="false">Headline</string>
+    <string name="body" translatable="false">Body</string>
+    <string name="loading_ads" translatable="false">Loading ad…</string>
+</resources>
